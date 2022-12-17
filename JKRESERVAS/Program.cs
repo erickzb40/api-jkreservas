@@ -1,19 +1,26 @@
 using JKRESERVAS;
+using JKRESERVAS.services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var cadena = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<SampleContext>(
     options =>
     {
-        options.UseSqlServer(cadena);
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddTransient<cifrado>();
+builder.Services.AddTransient<util>();
+//builder.Services.AddTransient<IEmpleadoRepository, EmpleadoRepository>();
+//builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 List<string> CorsOriginAllowed = builder.Configuration.GetSection("AllowedOrigins").Get<List<string>>();
 string[] origins = CorsOriginAllowed != null ? CorsOriginAllowed.ToArray() : new string[] { "*" };
@@ -22,24 +29,24 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
         builder => builder
-        .WithOrigins(origins)
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .SetIsOriginAllowed((host) => true)
+                  .AllowCredentials()
         );
 });
-//builder.Services.AddScoped<GenerarCodigoCupon>();
-var app = builder.Build();
 
+
+var app = builder.Build();
+app.UseCors("CorsPolicy");
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI();
+//}
 
 app.UseHttpsRedirection();
-app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

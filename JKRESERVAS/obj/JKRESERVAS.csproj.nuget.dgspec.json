@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyectos\\apis\\JKRESERVAS\\JKRESERVAS\\JKRESERVAS.csproj": {}
+    "E:\\proyectos\\apis\\api-jkreservas\\JKRESERVAS\\JKRESERVAS.csproj": {}
   },
   "projects": {
-    "C:\\proyectos\\apis\\JKRESERVAS\\JKRESERVAS\\JKRESERVAS.csproj": {
+    "E:\\proyectos\\apis\\api-jkreservas\\JKRESERVAS\\JKRESERVAS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyectos\\apis\\JKRESERVAS\\JKRESERVAS\\JKRESERVAS.csproj",
+        "projectUniqueName": "E:\\proyectos\\apis\\api-jkreservas\\JKRESERVAS\\JKRESERVAS.csproj",
         "projectName": "JKRESERVAS",
-        "projectPath": "C:\\proyectos\\apis\\JKRESERVAS\\JKRESERVAS\\JKRESERVAS.csproj",
+        "projectPath": "E:\\proyectos\\apis\\api-jkreservas\\JKRESERVAS\\JKRESERVAS.csproj",
         "packagesPath": "C:\\Users\\erick\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\apis\\JKRESERVAS\\JKRESERVAS\\obj\\",
+        "outputPath": "E:\\proyectos\\apis\\api-jkreservas\\JKRESERVAS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\erick\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,6 +63,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
